@@ -248,6 +248,29 @@ static int waveshare32b_init_sequence[] = {
 /* Supported displays in alphabetical order */
 static struct fbtft_device_display displays[] = {
 	{
+		.name = "adafruit144",
+		.spi = &(struct spi_board_info) {
+			.modalias = "fb_st7735r",
+			.max_speed_hz = 32000000,
+			.mode = SPI_MODE_0,
+			.platform_data = &(struct fbtft_platform_data) {
+				.display = {
+					.buswidth = 8,
+					.backlight = 1,
+					.width=128,
+					.height=128,
+				},
+				.gpios = (const struct fbtft_gpio []) {
+					{ "reset", 25 },
+					{ "dc", 24 },
+					{ "led", 18 },
+					{},
+				},
+				.gamma = ADAFRUIT18_GAMMA,
+			}
+		}
+	},
+	{
 		.name = "adafruit18",
 		.spi = &(struct spi_board_info) {
 			.modalias = "fb_st7735r",
