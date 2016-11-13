@@ -257,9 +257,10 @@ static struct fbtft_device_display displays[] = {
 				.display = {
 					.buswidth = 8,
 					.backlight = 1,
-					.width=128,
-					.height=128,
+					.width=129,
+					.height=129,
 				},
+				.bgr=true,
 				.gpios = (const struct fbtft_gpio []) {
 					{ "reset", 25 },
 					{ "dc", 24 },
